@@ -12,7 +12,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+
+    String Store = getIntent().getStringExtra("Store_Name");
+
     private GoogleMap mMap;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
