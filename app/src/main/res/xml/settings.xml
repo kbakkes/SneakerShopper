@@ -4,6 +4,6 @@
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="pref_soundOn"
-        android:summary="Turn the music on and off"
+        android:summary="Turn the Start Up Music on and off"
         android:title="Music on " />
 </PreferenceScreen>

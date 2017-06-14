@@ -1,18 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.sneakershopper.karim.sneakershopper.LocationActivity">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/detail_title"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="GET GPS LOCATION"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="190dp"
-        android:layout_marginLeft="104dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_weight="0.20"
+        android:gravity="center"
+        android:text="Title"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editTextLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.33"
+        android:editable="false">
+
+        <requestFocus></requestFocus>
+    </EditText>
+
+    <LinearLayout
+        android:id="@+id/layButtonH"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:layout_weight="0.15">
+
+        <Button
+            android:id="@+id/btnLocation"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:text="Get Current Location"></Button>
+
+        <Button
+            android:id="@+id/route_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.57"
+            android:onClick="goToRoute"
+            android:text="Get Route" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layloadingH"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.20"
+        android:gravity="center">
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></ProgressBar>
+    </LinearLayout>
+</LinearLayout>

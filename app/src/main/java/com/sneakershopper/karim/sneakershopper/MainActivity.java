@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         QuitButton.setOnClickListener(this);
 
 
+
+
         // setting font
         TextView title = (TextView)findViewById(R.id.home_title);
         Typeface typeFace=Typeface.createFromAsset(getAssets(),"fonts/AmericanCaptain.ttf");
@@ -62,11 +64,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.button_maps:
-                Intent i = new Intent(this,MapsActivity.class);
+                Intent i = new Intent(this,LocationActivity.class);
                 startActivity(i);
                 break;
             case R.id.stores_button:
-                Intent Stores = new Intent(this,StoresActivity.class);
+                Intent Stores = new Intent(this,StoreActivity.class);
                 startActivity(Stores);
                 break;
             case R.id.settings_button:

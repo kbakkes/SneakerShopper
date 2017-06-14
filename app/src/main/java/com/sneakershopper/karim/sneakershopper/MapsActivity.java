@@ -1,7 +1,9 @@
 package com.sneakershopper.karim.sneakershopper;
 
-import android.support.v4.app.FragmentActivity;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -10,24 +12,40 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+
+
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-
-    String Store = getIntent().getStringExtra("Store_Name");
-
     private GoogleMap mMap;
-
-
+//    Resources res = getResources();
+//    int[] latlist = res.getIntArray(R.array.latitude);
+//    int[] longlist = res.getIntArray(R.array.latitude);
+//    String[] stores = res.getStringArray(R.array.store_names);
+//    Bundle bundle = getIntent().getExtras();
+//    Integer titleposition = (Integer) bundle.get("position");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_maps2);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        Bundle bundle = getIntent().getExtras();
+        Integer titleposition = (Integer) bundle.get("position");
+        Resources res = getResources();
+        int[] latlist = res.getIntArray(R.array.latitude);
+        int[] longlist = res.getIntArray(R.array.latitude);
+        String[] stores = res.getStringArray(R.array.store_names);
+
+
+        Log.d("SneakerShopper"," array position " + stores[titleposition]+ " Array Position: " + titleposition);
+
     }
+
 
 
     /**
@@ -43,11 +61,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-
-        LatLng Footlocker = new LatLng(51.920882, 4.476588);
-        mMap.setMinZoomPreference(19.0f);
-        mMap.setMaxZoomPreference(20.0f);
-        mMap.addMarker(new MarkerOptions().position(Footlocker).title("Foot Locker Lijnbaan"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(Footlocker));
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(40,40);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }

@@ -15,8 +15,20 @@
         <item>@drawable/footlocker</item>
         <item>@drawable/jdsports</item>
         <item>@drawable/snipes</item>
-
     </array>
+    <array name="latitude">
+        <item>51.920882</item>
+        <item>51.920657</item>
+        <item>51.921034</item>
+    </array>
+    <array name="longitude">
+        <item>4.476588</item>
+        <item>4.476827</item>
+        <item>4.476946</item>
+    </array>
+
+
+    <!--Store Latitude  -->
 
     <string name="action_settings">Settings</string>
     <string name="find">Find Stores</string>
