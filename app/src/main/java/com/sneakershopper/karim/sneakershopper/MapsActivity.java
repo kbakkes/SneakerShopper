@@ -17,16 +17,36 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+
+
+   final private double[] latlist = {
+            51.920882 ,
+            51.921054,
+            51.920657
+
+        };
+    final private double[] longlist = {
+            4.476588,
+            4.477092,
+            4.476827
+
+    };
+
+    int titleposition = 0;
+    String[] stores =  {
+
+    };
+
+
     private GoogleMap mMap;
-//    Resources res = getResources();
-//    int[] latlist = res.getIntArray(R.array.latitude);
-//    int[] longlist = res.getIntArray(R.array.latitude);
-//    String[] stores = res.getStringArray(R.array.store_names);
-//    Bundle bundle = getIntent().getExtras();
-//    Integer titleposition = (Integer) bundle.get("position");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps2);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -34,17 +54,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+
         Bundle bundle = getIntent().getExtras();
-        Integer titleposition = (Integer) bundle.get("position");
+        titleposition = (Integer) bundle.get("position");
+
         Resources res = getResources();
-        int[] latlist = res.getIntArray(R.array.latitude);
-        int[] longlist = res.getIntArray(R.array.latitude);
-        String[] stores = res.getStringArray(R.array.store_names);
+
+        stores = res.getStringArray(R.array.store_names);
 
 
-        Log.d("SneakerShopper"," array position " + stores[titleposition]+ " Array Position: " + titleposition);
+
+        Log.d("Shop Logger", "Lat: "+latlist[titleposition] +  " Long: " + longlist[titleposition]);
+        Log.d("Shop Logger"," array position " + stores[titleposition]+ " Array Position: " + titleposition);
+
+
 
     }
+
+
 
 
 
@@ -57,13 +84,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-    @Override
+
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(40,40);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng store = new LatLng(latlist[titleposition],longlist[titleposition]);
+        mMap.setMinZoomPreference(18.0f);
+        mMap.setMaxZoomPreference(25.0f);
+        mMap.addMarker(new MarkerOptions().position(store).title("Store: " + stores[titleposition]));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(store));
+
     }
 }
